@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "/protobuff;protobuff";
+
+service CrudService {
+  rpc CreatePerson (Person) returns (Person);
+  rpc ReadPerson (ReadRequest) returns (Person);
+  rpc UpdatePerson (Person) returns (Person);
+  rpc DeletePerson (ReadRequest) returns (DeleteResponse);
+  rpc GetAgeById (ReadRequest) returns (AgeResponse);
+}
+
+message Person {
+  int64 id = 1;
+  string name = 2;
+  int32 age = 3;
+}
+
+message ReadRequest {
+  int64 id = 1;
+}
+
+message DeleteResponse {
+  bool success = 1;
+}
+
+message AgeResponse {
+  int32 age = 1;
+}
